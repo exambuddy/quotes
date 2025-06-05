@@ -18,6 +18,7 @@ const quotes = [
 // Route: GET /quote
 app.get("/quote", (req, res) => {
   const randomIndex = Math.floor(Math.random() * quotes.length);
+  console.log("REQ started")
   res.json({ quote: quotes[randomIndex] });
 });
 
