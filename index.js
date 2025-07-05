@@ -18,8 +18,15 @@ const quotes = [
 // Route: GET /quote
 app.get("/quote", (req, res) => {
   const randomIndex = Math.floor(Math.random() * quotes.length);
-  console.log("REQ started")
+  console.log("REQ started");
   res.json({ quote: quotes[randomIndex] });
+});
+
+/* --------------------------------------------------
+   NEW: Health‑check route
+   -------------------------------------------------- */
+app.get("/health", (req, res) => {
+  res.json({ status: "ok", timestamp: Date.now() });
 });
 
 // Fallback for undefined routes
@@ -29,6 +36,6 @@ app.use((req, res) => {
 
 // Start server
 const PORT = 3000;
-app.listen(PORT,'0.0.0.0', () => {
+app.listen(PORT, "0.0.0.0", () => {
   console.log(`🚀 Server running at http://localhost:${PORT}/quote`);
 });
